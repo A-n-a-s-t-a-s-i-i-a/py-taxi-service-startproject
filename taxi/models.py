@@ -13,7 +13,9 @@ class Manufacturer(models.Model):
 
 class Car(models.Model):
     model = models.CharField(max_length=250)
-    manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE, related_name='cars')
+    manufacturer = models.ForeignKey(Manufacturer,
+                                     on_delete=models.CASCADE,
+                                     related_name="cars")
     drivers = models.ManyToManyField(settings.AUTH_USER_MODEL)
 
     class Meta:
@@ -24,7 +26,10 @@ class Car(models.Model):
 
 
 class Driver(AbstractUser):
-    license_number = models.CharField(max_length=250, unique=True, blank=True, null=True)
+    license_number = models.CharField(max_length=250,
+                                      unique=True,
+                                      blank=True,
+                                      null=True)
     password = models.CharField(max_length=250)
 
     class Meta:
